@@ -1,0 +1,60 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: "Poppins",sans-serif;
+    background-image: url("wolf.jpg");
+  
+   background-repeat: no-repeat;
+   background-position:  50% 0em;
+   background-color: #000000;
+   text-align: center;
+   padding: auto;
+   
+
+}
+.timerbox{
+   text-align: center;
+    
+  
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+    
+    
+  
+}
+h1{
+    font-weight: normal;
+}
+.big-text{
+    font-size:3rem;
+    color: aqua;
+    font-weight: bold;
+    
+    
+    margin: 0;
+}
+span{
+    
+    margin-top: 0;
+    line-height: 1em;
+    color: aqua;
+    
+
+}
+
+.days,.hours,.minutes,.seconds{    
+    width: 25%;
+    padding: 3% ;
+    box-shadow: rgba(65, 255, 38, 0.35) 0px 5px 15px;
+
+    
+}
