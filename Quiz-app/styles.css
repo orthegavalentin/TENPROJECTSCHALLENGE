@@ -15,6 +15,7 @@ body {
 }
 .main-container {
   width: 50%;
+  text-transform: capitalize;
 
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
@@ -31,7 +32,8 @@ button {
 
   background-color: #2ab5be;
 }
-h4 {
+h4,
+h5 {
   text-align: center;
 }
 button:hover {
@@ -39,4 +41,14 @@ button:hover {
 }
 .questions {
   margin: 2%;
+}
+.score {
+  margin: 0 10px;
+  color: rgb(43, 197, 22);
+  font-size: large;
+  font-weight: bold;
+}
+
+label {
+  cursor: pointer;
 }

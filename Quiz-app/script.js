@@ -25,10 +25,43 @@ const lab_a = document.getElementById("lab_a");
 const lab_b = document.getElementById("lab_b");
 const lab_c = document.getElementById("lab_c");
 const question = document.getElementById("question");
+const quiz = document.getElementById("quiz");
 
 const submit = document.getElementById("submit");
 
+var elements = [];
+function loadElements() {
+  elements = document.getElementsByName("answers");
+}
+//function to return selected answer
+function findCheckedElement() {
+  loadElements();
+
+  let checkedElement = null;
+  let label, selector;
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i].checked) {
+      selector = "label[for=" + elements[i].id + "]";
+      label = document.querySelector(selector);
+      checkedElement = elements[i].value;
+    }
+  }
+  return checkedElement != null
+    ? checkedElement
+    : alert("please select an answer");
+}
+
+//function toreset selections
+function resetRadios() {
+  var elements = document.getElementsByName("answers");
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].checked = false;
+  }
+}
+
 let currentIndex = 0;
+let score = 0;
 
 function loadQuestion() {
   const currentData = QuizData[currentIndex];
@@ -41,11 +74,20 @@ function loadQuestion() {
 
 loadQuestion();
 submit.addEventListener("click", () => {
+  let checked = findCheckedElement();
+  checked === QuizData[currentIndex].correct ? score++ : (score += 0);
   if (currentIndex < 2) {
-    currentIndex++;
+    if (checked != null) {
+      currentIndex++;
+    }
+
     loadQuestion();
   } else {
-    alert("You finished the quiz BABY");
-    currentIndex = 0;
+    quiz.innerHTML = `<h5>you finished the quiz with a score of <span class="score">${score}</span> 
+    out of  <span class="score">${QuizData.length}</span></h5>
+      <button onClick="location.reload()">refresh</button>`;
+    score = 0;
   }
+
+  resetRadios();
 });
